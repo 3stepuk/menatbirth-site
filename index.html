@@ -265,9 +265,11 @@
     font-size: 1.35rem;
     line-height: 1.25;
   }
-  .book-placeholder .author-line {
-    color: rgba(250,246,238,0.7);
-    font-size: 0.8rem;
+  .book-cover {
+    width: 230px;
+    border-radius: 3px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    transform: rotate(-3deg);
   }
 
   /* ---------- CUE CARD (signature element) ---------- */
@@ -321,6 +323,12 @@
     padding: 16px;
   }
   .about-grid .img-placeholder { aspect-ratio: 4/5; }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
   .about-copy .credentials {
     margin-top: 22px;
     display: flex;
@@ -560,13 +568,7 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="book-placeholder">
-        <span class="tag">[PLACEHOLDER: Book cover image]</span>
-        <div>
-          <div class="title">Men, Love &amp; Birth</div>
-          <div class="author-line">Mark Harris · 2nd Edition</div>
-        </div>
-      </div>
+      <img class="book-cover" src="images/cover.jpg" alt="Men, Love &amp; Birth — Second Edition by Mark Harris">
     </div>
   </div>
 </section>
@@ -574,7 +576,7 @@
 <!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="wrap about-grid">
-    <div class="img-placeholder">[PLACEHOLDER: Author headshot]</div>
+    <img class="about-photo" src="images/mark-headshot.jpg" alt="Mark Harris — author of Men, Love &amp; Birth">
     <div class="about-copy">
       <span class="eyebrow">About the author</span>
       <h2>Thirty years in UK delivery rooms.</h2>
