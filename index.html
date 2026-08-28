@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Men at Birth — Men, Love & Birth</title>
+
+<!-- 
+  ============================================================
+  MEN AT BIRTH — ONE PAGE SITE TEMPLATE
+  ============================================================
+  Design concept: the whole book is about giving men the exact
+  words to say in the birth room. So the visual signature is the
+  "cue card" — a slightly-imperfect index card, the kind you'd
+  scribble a line on and keep in your pocket. Testimonials, the
+  free guide, and the blog cards are all built as cue cards,
+  tilted a few degrees like they've been pulled from a stack.
+  The hero background carries a slow-moving heartbeat/CTG
+  monitor line — a birth-room instrument, not a generic gradient.
+
+  Palette:
+    --navy      #14213D  (deep navy — headers, hero, footer)
+    --cream     #FAF6EE  (warm off-white — page background)
+    --amber     #C08A3E  (muted gold accent — CTAs, dividers)
+    --ink       #1E1B16  (body text)
+    --card      #FFFDF8  (cue-card surface, slightly warmer than page bg)
+
+  Type:
+    Display / headings: 'Fraunces' (serif, characterful, has real
+      texture at large sizes — used with restraint)
+    Body / UI: 'Public Sans' (clean, humane sans)
+    Eyebrows / labels: 'Fraunces' small-caps style via letter-spacing,
+      not a separate mono face — keeps the palette of fonts to two.
+
+  HOW TO EDIT THIS FILE
+  ----------------------
+  1. Search for [PLACEHOLDER] to find every image/link/text you
+     need to swap for the real thing.
+  2. All styling lives in the <style> block below, organised by
+     section, with comments.
+  3. Image placeholders are plain CSS boxes (no external image
+     requests) — swap the <div class="img-placeholder"> for an
+     <img src="..."> tag when you have real photography.
+  ============================================================
+-->
+
+<style>
+  :root {
+    --navy: #14213D;
+    --navy-deep: #0D1730;
+    --cream: #FAF6EE;
+    --amber: #C08A3E;
+    --amber-soft: #E8D3AD;
+    --ink: #1E1B16;
+    --ink-soft: #55503f;
+    --card: #FFFDF8;
+    --line: rgba(20,33,61,0.12);
+    --radius: 6px;
+    --max: 1120px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--amber);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  section { padding: 88px 0; }
+  @media (max-width: 720px) { section { padding: 56px 0; } }
+
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+  .btn-amber {
+    background: var(--amber);
+    color: var(--navy-deep);
+  }
+  .btn-amber:hover { box-shadow: 0 8px 20px rgba(192,138,62,0.35); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border-color: rgba(250,246,238,0.5);
+  }
+  .btn-outline:hover { border-color: var(--cream); }
+
+  .btn-navy-outline {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--navy);
+  }
+  .logo span { color: var(--amber); }
+  .nav-links { display: flex; gap: 28px; font-size: 0.95rem; }
+  .nav-links a { text-decoration: none; color: var(--ink); }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta { }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: var(--navy);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+    padding: 110px 0 90px;
+  }
+  /* Ambient CTG / heartbeat trace, drawn as an animated SVG stroke */
+  .trace-wrap {
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  .trace-path {
+    stroke: var(--amber);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw 9s linear infinite;
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+  }
+
+  .hero h1 {
+    color: var(--cream);
+    font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+    line-height: 1.12;
+  }
+  .hero .sub {
+    margin-top: 20px;
+    font-size: 1.15rem;
+    color: rgba(250,246,238,0.85);
+    max-width: 46ch;
+  }
+  .hero-ctas {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Book cover placeholder, propped against a cue-card stack */
+  .hero-art {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .book-placeholder {
+    width: 230px;
+    aspect-ratio: 2/3;
+    background: linear-gradient(160deg, #24345C, var(--navy-deep));
+    border: 1px solid rgba(250,246,238,0.25);
+    border-radius: 3px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px 18px;
+    transform: rotate(-3deg);
+  }
+  .book-placeholder .tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--amber-soft);
+    border: 1px dashed rgba(232,211,173,0.5);
+    padding: 6px 8px;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .book-placeholder .title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--cream);
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+  .book-placeholder .author-line {
+    color: rgba(250,246,238,0.7);
+    font-size: 0.8rem;
+  }
+
+  /* ---------- CUE CARD (signature element) ---------- */
+  .cue-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 28px 26px;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(20,33,61,0.08);
+  }
+  /* the little "pinhole" that suggests a card pulled from a stack */
+  .cue-card::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber-soft);
+    box-shadow: inset 0 0 0 1px rgba(20,33,61,0.15);
+  }
+  .cue-card.tilt-l { transform: rotate(-1.6deg); }
+  .cue-card.tilt-r { transform: rotate(1.4deg); }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .section-head { max-width: 640px; margin-bottom: 48px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+  .section-head p { color: var(--ink-soft); margin-top: 14px; font-size: 1.05rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+  .img-placeholder {
+    background: repeating-linear-gradient(135deg, #E9E2D2, #E9E2D2 10px, #DED4BD 10px, #DED4BD 20px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 16px;
+  }
+  .about-grid .img-placeholder { aspect-ratio: 4/5; }
+  .about-copy .credentials {
+    margin-top: 22px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .credentials .stat {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    color: var(--amber);
+    display: block;
+  }
+  .credentials .label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- WHAT'S NEW ---------- */
+  .whats-new-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 960px) { .whats-new-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .whats-new-grid { grid-template-columns: 1fr; } }
+  .new-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .new-card p { font-size: 0.95rem; color: var(--ink-soft); margin: 0; }
+  .new-card .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--amber);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- WHO IT'S FOR ---------- */
+  .audience-band {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .audience-band .section-head h2,
+  .audience-band .section-head p { color: var(--cream); }
+  .audience-band .section-head p { color: rgba(250,246,238,0.75); }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pill {
+    border: 1px solid rgba(250,246,238,0.35);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 0.92rem;
+    color: var(--cream);
+  }
+
+  /* ---------- FREE GUIDE ---------- */
+  .guide-band {
+    background: var(--amber-soft);
+  }
+  .guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 860px) { .guide-grid { grid-template-columns: 1fr; } }
+  .guide-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .guide-form input[type="email"] {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .guide-preview-card ul {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .guide-preview-card li { margin-bottom: 6px; }
+  .guide-preview-card .line-number {
+    color: var(--amber);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonial-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 24px;
+    padding-top: 8px;
+  }
+  @media (max-width: 860px) { .testimonial-row { grid-template-columns: 1fr; } }
+  .testimonial-row .cue-card p.quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--navy);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  .testimonial-row .who {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    border-top: 1px dashed var(--line);
+    padding-top: 12px;
+  }
+
+  /* ---------- MEDIA / PRESS ---------- */
+  .press-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (max-width: 860px) { .press-grid { grid-template-columns: 1fr; } }
+  .press-copy .btn { margin-top: 18px; }
+
+  /* ---------- BUY THE BOOK ---------- */
+  .buy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .buy-grid { grid-template-columns: 1fr; } }
+  .buy-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+  }
+  .buy-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+  .buy-card .price {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: var(--amber);
+    margin: 10px 0 18px;
+  }
+  .signed-note {
+    margin-top: 28px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- BLOG ---------- */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 860px) { .blog-grid { grid-template-columns: 1fr; } }
+  .blog-card h3 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 10px; }
+  .blog-card .read-more {
+    font-size: 0.9rem;
+    color: var(--amber);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--navy-deep);
+    color: rgba(250,246,238,0.7);
+    padding: 56px 0 32px;
+    font-size: 0.9rem;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(250,246,238,0.15);
+  }
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    color: var(--cream);
+    font-size: 1.1rem;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { text-decoration: none; color: rgba(250,246,238,0.7); }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-bottom {
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="logo">Men <span>at</span> Birth</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#guide">Free Guide</a>
+      <a href="#testimonials">Praise</a>
+      <a href="#press">Press</a>
+      <a href="#buy">Buy the Book</a>
+    </nav>
+    <a href="#buy" class="btn btn-navy-outline nav-cta" style="padding:10px 18px; font-size:0.9rem;">Buy the Book</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="trace-wrap" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" width="100%" height="100%" preserveAspectRatio="none">
+      <path class="trace-path" d="M0,200 L120,200 L140,120 L160,280 L180,200 L340,200 L360,140 L380,260 L400,200
+        L560,200 L580,100 L600,300 L620,200 L780,200 L800,130 L820,270 L840,200
+        L1000,200 L1020,110 L1040,290 L1060,200 L1200,200"/>
+    </svg>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Men, Love &amp; Birth — 2nd Edition</span>
+      <h1>Partners are not spare parts in the birth room.</h1>
+      <p class="sub">The practical guide that tells men exactly what to say and do in labour — including caesarean and instrumental birth.</p>
+      <div class="hero-ctas">
+        <a href="#buy" class="btn btn-amber">Buy on Amazon</a>
+        <a href="#guide" class="btn btn-outline">Get the Free Guide</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="book-placeholder">
+        <span class="tag">[PLACEHOLDER: Book cover image]</span>
+        <div>
+          <div class="title">Men, Love &amp; Birth</div>
+          <div class="author-line">Mark Harris · 2nd Edition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="img-placeholder">[PLACEHOLDER: Author headshot]</div>
+    <div class="about-copy">
+      <span class="eyebrow">About the author</span>
+      <h2>Thirty years in UK delivery rooms.</h2>
+      <p style="margin-top:16px; color:var(--ink-soft); max-width:60ch;">
+        Mark Harris is a trained midwife with more than thirty years in birth work — a father of eight and grandfather of thirteen who has spent decades teaching men what actually helps in the birth room. Originally published by Pinter &amp; Martin in 2015, this fully revised second edition is his own. He has a following of more than 12,000 across X, Instagram, LinkedIn and YouTube who turn to him for straight-talking, practical guidance on what actually helps in the birth room.
+      </p>
+      <div class="credentials">
+        <div>
+          <span class="stat">30+</span>
+          <span class="label">Years in UK delivery rooms</span>
+        </div>
+        <div>
+          <span class="stat">12k+</span>
+          <span class="label">Following across social platforms</span>
+        </div>
+        <div>
+          <span class="stat">2015</span>
+          <span class="label">First published, Pinter &amp; Martin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT'S NEW ================= -->
+<section style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Fully revised, September 2026</span>
+      <h2>What's new in the 2nd edition</h2>
+    </div>
+    <div class="whats-new-grid">
+      <div class="new-card">
+        <span class="num">01</span>
+        <h3>Caesarean &amp; instrumental birth, in full</h3>
+        <p>Two new dedicated chapters, reflecting that they now account for more than half of UK births.</p>
+      </div>
+      <div class="new-card">
+        <span class="num">02</span>
+        <h3>Trauma-aware language, throughout</h3>
+        <p>Every script and example has been rewritten with trauma-aware, consent-led language.</p>
+      </div>
+      <div class="new-card">
+        <span class="num">03</span>
+        <h3>Updated UK statistics</h3>
+        <p>Current NHS data on birth types, intervention rates, and partner involvement.</p>
+      </div>
+      <div class="new-card">
+        <span class="num">04</span>
+        <h3>"Not spare parts," made practical</h3>
+        <p>A clearer throughline: partners have a real job to do, and this book tells them what it is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO IT'S FOR ================= -->
+<section class="audience-band">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Who this book is for</span>
+      <h2>If you're going to be in that room, this is for you.</h2>
+    </div>
+    <div class="pill-row" style="justify-content:center;">
+      <span class="pill">Expectant fathers</span>
+      <span class="pill">Birth partners</span>
+      <span class="pill">Doulas</span>
+      <span class="pill">Midwives</span>
+      <span class="pill">Antenatal educators</span>
+      <span class="pill">Men who want to understand birth better</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FREE GUIDE ================= -->
+<section id="guide" class="guide-band">
+  <div class="wrap guide-grid">
+    <div>
+      <span class="eyebrow">Free download</span>
+      <h2>What to Say in the Birth Room</h2>
+      <p style="margin-top:14px; color:var(--ink-soft); max-width:48ch;">
+        Ten short lines that help — and the ones to avoid. A free PDF, straight from the book, that you can read in five minutes and remember in five seconds.
+      </p>
+      <form class="guide-form" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit" class="btn btn-amber">Send me the guide</button>
+      </form>
+      <p style="font-size:0.8rem; color:var(--ink-soft); margin-top:10px;">No spam. Unsubscribe any time. [PLACEHOLDER: link to privacy note]</p>
+    </div>
+    <div class="cue-card guide-preview-card tilt-l">
+      <span class="eyebrow" style="margin-bottom:4px;">Preview</span>
+      <h3 style="font-size:1.05rem;">The 10 Lines That Help</h3>
+      <ul>
+        <li><span class="line-number">1.</span> "I'm not going anywhere."</li>
+        <li><span class="line-number">2.</span> "Tell me what you need right now."</li>
+        <li><span class="line-number">3.</span> "You're doing this. I've got the rest."</li>
+        <li>[PLACEHOLDER: remaining 7 lines from the guide]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">What readers say</span>
+      <h2>From the people who see birth rooms every day</h2>
+    </div>
+    <div class="testimonial-row">
+      <div class="cue-card tilt-l">
+        <p class="quote">"I recommend this to every partner I meet antenatally. It gives them something practical to hold onto, which is exactly what they need."</p>
+        <p class="who">[PLACEHOLDER NAME] · Midwife, NHS Trust</p>
+      </div>
+      <div class="cue-card">
+        <p class="quote">"I read the caesarean chapter the night before our section. I knew what to say and, more importantly, what not to say. It mattered."</p>
+        <p class="who">[PLACEHOLDER NAME] · Father of two</p>
+      </div>
+      <div class="cue-card tilt-r">
+        <p class="quote">"There isn't another UK book that takes men's role in the birth room this seriously, or this practically. It's become part of my antenatal course."</p>
+        <p class="who">[PLACEHOLDER NAME] · Antenatal educator</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEDIA / PRESS ================= -->
+<section id="press" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap press-grid">
+    <div class="img-placeholder" style="aspect-ratio:4/5;">[PLACEHOLDER: Press headshot]</div>
+    <div class="img-placeholder" style="aspect-ratio:2/3;">[PLACEHOLDER: Book cover, high-res]</div>
+    <div class="press-copy">
+      <span class="eyebrow">For journalists &amp; producers</span>
+      <h2 style="font-size:1.6rem;">Available for interview and comment</h2>
+      <p style="margin-top:14px; color:var(--ink-soft);">
+        [Author Name] is available for interviews, expert commentary, and review copies on the subject of men, partners, and birth — including caesarean and instrumental birth, birth trauma in men, and maternity advocacy. A full media kit, including high-resolution images, a longer biography, and sample interview questions, is available on request.
+      </p>
+      <a href="mailto:press@menatbirth.com" class="btn btn-navy-outline">Request the media kit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BUY THE BOOK ================= -->
+<section id="buy">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Get your copy</span>
+      <h2>Buy Men, Love &amp; Birth</h2>
+    </div>
+    <div class="buy-grid">
+      <div class="buy-card">
+        <h3>Paperback</h3>
+        <p style="color:var(--ink-soft); font-size:0.95rem;">Fully revised 2nd edition, September 2026.</p>
+        <div class="price">£11.99</div>
+        <a href="#" class="btn btn-amber" style="width:100%; justify-content:center;">Buy on Amazon</a>
+      </div>
+      <div class="buy-card">
+        <h3>Kindle</h3>
+        <p style="color:var(--ink-soft); font-size:0.95rem;">Instant download, same revised content.</p>
+        <div class="price">£7.99</div>
+        <a href="#" class="btn btn-amber" style="width:100%; justify-content:center;">Buy on Amazon</a>
+      </div>
+    </div>
+    <p class="signed-note">Prefer a signed copy? [PLACEHOLDER: contact link] — direct from the author, while stocks last.</p>
+  </div>
+</section>
+
+<!-- ================= BLOG ================= -->
+<section style="background:var(--card); border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Latest insights</span>
+      <h2>From the blog</h2>
+    </div>
+    <div class="blog-grid">
+      <div class="cue-card blog-card">
+        <h3>What to say during a caesarean</h3>
+        <p style="color:var(--ink-soft); font-size:0.92rem;">The three sentences that keep you useful, calm, and present in theatre — and the ones that don't help.</p>
+        <a href="#" class="read-more">Read the article →</a>
+      </div>
+      <div class="cue-card blog-card">
+        <h3>Birth trauma in men is real</h3>
+        <p style="color:var(--ink-soft); font-size:0.92rem;">Why partners are rarely asked how they're doing after a difficult birth, and what changes when someone does.</p>
+        <a href="#" class="read-more">Read the article →</a>
+      </div>
+      <div class="cue-card blog-card">
+        <h3>The three words that make labour harder</h3>
+        <p style="color:var(--ink-soft); font-size:0.92rem;">Well-meant phrases that raise a labouring partner's stress — and what to say instead.</p>
+        <a href="#" class="read-more">Read the article →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-logo">Men at Birth</div>
+      <div class="footer-links">
+        <a href="mailto:hello@menatbirth.com">hello@menatbirth.com [PLACEHOLDER]</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="X">X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Men at Birth. All rights reserved.</span>
+      <span>We only use your email to send the guide and occasional updates. [PLACEHOLDER: link to full privacy policy]</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
