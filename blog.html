@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From the blog — Men at Birth</title>
+
+<!--
+  MEN AT BIRTH — BLOG PAGE
+  Same design shell as index.html (cue-card concept, navy/cream/amber).
+  Posts are being populated by Mark. Each post = one <article> block.
+-->
+
+<style>
+  :root {
+    --navy: #14213D;
+    --navy-deep: #0D1730;
+    --cream: #FAF6EE;
+    --amber: #C08A3E;
+    --amber-soft: #E8D3AD;
+    --ink: #1E1B16;
+    --ink-soft: #55503f;
+    --card: #FFFDF8;
+    --line: rgba(20,33,61,0.12);
+    --radius: 6px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    font-size: 19px;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    margin: 0;
+  }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    color: var(--amber);
+    margin-bottom: 10px;
+    display: block;
+  }
+  section { padding: 88px 0; }
+  @media (max-width: 720px) { section { padding: 56px 0; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-navy-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+  header.site-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; max-width: var(--max); margin: 0 auto;
+  }
+  .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; color: var(--navy); }
+  .logo span { color: var(--amber); }
+  .nav-links { display: flex; gap: 28px; font-size: 0.95rem; }
+  .nav-links a { text-decoration: none; color: var(--ink); }
+  .nav-links a:hover { color: var(--amber); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+  .page-head { background: var(--navy); color: var(--cream); padding: 80px 0 56px; }
+  .page-head h1 { color: var(--cream); font-size: clamp(2rem, 4vw, 2.8rem); }
+  .page-head p { color: rgba(250,246,238,0.8); margin-top: 14px; max-width: 52ch; }
+  .cue-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 28px 26px;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(20,33,61,0.08);
+  }
+  .cue-card::before {
+    content: ""; position: absolute; top: 14px; left: 14px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amber-soft);
+    box-shadow: inset 0 0 0 1px rgba(20,33,61,0.15);
+  }
+  .post-list { display: grid; gap: 24px; }
+  .post h2 { font-size: 1.4rem; }
+  .post .meta { font-size: 0.88rem; color: var(--ink-soft); margin-top: 8px; }
+  .post .body { margin-top: 16px; color: var(--ink-soft); }
+  .post .body p { margin: 0 0 14px; }
+  .post .coming { font-style: italic; color: var(--ink-soft); }
+  .back-link { display: inline-block; margin-top: 40px; font-weight: 600; color: var(--amber); text-decoration: none; }
+  footer {
+    background: var(--navy-deep);
+    color: rgba(250,246,238,0.7);
+    padding: 56px 0 32px;
+    font-size: 0.9rem;
+    margin-top: 88px;
+  }
+  .footer-grid {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+    padding-bottom: 28px; border-bottom: 1px solid rgba(250,246,238,0.15);
+  }
+  .footer-logo { font-family: 'Fraunces', serif; color: var(--cream); font-size: 1.1rem; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { text-decoration: none; color: rgba(250,246,238,0.7); }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-bottom { padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="logo">Men <span>at</span> Birth</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#guide">Free Guide</a>
+      <a href="index.html#testimonials">Praise</a>
+      <a href="index.html#press">Press</a>
+      <a href="index.html#buy">Buy the Book</a>
+    </nav>
+    <a href="index.html#buy" class="btn btn-navy-outline" style="padding:10px 18px; font-size:0.9rem;">Buy the Book</a>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Men at Birth</span>
+    <h1>From the blog</h1>
+    <p>Straight-talking, practical pieces for men who are about to be in that room — and the people who love them.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap post-list">
+
+    <article class="cue-card post">
+      <h2>What to say during a caesarean</h2>
+      <p class="meta">[Date] · [Category]</p>
+      <div class="body">
+        <p class="coming">[Full post coming soon — Mark is writing]</p>
+      </div>
+    </article>
+
+    <article class="cue-card post">
+      <h2>Birth trauma in men is real</h2>
+      <p class="meta">[Date] · [Category]</p>
+      <div class="body">
+        <p class="coming">[Full post coming soon — Mark is writing]</p>
+      </div>
+    </article>
+
+    <article class="cue-card post">
+      <h2>The three words that make labour harder</h2>
+      <p class="meta">[Date] · [Category]</p>
+      <div class="body">
+        <p class="coming">[Full post coming soon — Mark is writing]</p>
+      </div>
+    </article>
+
+    <a href="index.html" class="back-link">← Back to the site</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-logo">Men at Birth</div>
+      <div class="footer-links">
+        <a href="mailto:hello@menatbirth.com">hello@menatbirth.com</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="X">X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Men at Birth. All rights reserved.</span>
+      <span>We only use your email to send the guide and occasional updates.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
