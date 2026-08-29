@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://menlovebirth.com/sitemap.xml
