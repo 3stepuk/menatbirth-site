@@ -424,6 +424,12 @@
     color: var(--ink-soft);
   }
   .guide-preview-card li { margin-bottom: 6px; }
+  .guide-preview-card li.teaser {
+    list-style: none;
+    margin-left: -18px;
+    font-style: italic;
+    color: var(--purple);
+  }
   .guide-preview-card .line-number {
     color: var(--amber);
     font-family: 'Fraunces', serif;
@@ -672,7 +678,7 @@
         <input type="email" placeholder="Your email address" required aria-label="Email address">
         <button type="submit" class="btn btn-amber">Send me the guide</button>
       </form>
-      <p style="font-size:0.8rem; color:var(--ink-soft); margin-top:10px;">No spam. Unsubscribe any time. [PLACEHOLDER: link to privacy note]</p>
+      <p style="font-size:0.8rem; color:var(--ink-soft); margin-top:10px;">No spam. Unsubscribe any time. <a href="privacy.html" style="color:var(--purple);">Privacy notice</a></p>
     </div>
       <div class="cue-card guide-preview-card tilt-l">
         <span class="eyebrow" style="margin-bottom:4px;">Preview</span>
@@ -681,13 +687,7 @@
           <li><span class="line-number">1.</span> "I'm not going anywhere."</li>
           <li><span class="line-number">2.</span> "Tell me what you need right now."</li>
           <li><span class="line-number">3.</span> "You're doing this. I've got the rest."</li>
-          <li><span class="line-number">4.</span> "You can feel the bed beneath you."</li>
-          <li><span class="line-number">5.</span> "With every breath, you might feel more at ease."</li>
-          <li><span class="line-number">6.</span> "Each tightening is a wave bringing our baby closer."</li>
-          <li><span class="line-number">7.</span> "You're safe. The baby's safe. We're where we need to be."</li>
-          <li><span class="line-number">8.</span> "Everything's on track — nothing needs deciding right now."</li>
-          <li><span class="line-number">9.</span> "Whatever you decide now, I'm with you."</li>
-          <li><span class="line-number">10.</span> "You've got this. And I've got you."</li>
+          <li class="teaser">…and the seven that follow — yours free, with the why behind each one.</li>
         </ul>
       </div>
   </div>
@@ -799,7 +799,7 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Men at Birth. All rights reserved.</span>
-      <span>We only use your email to send the guide and occasional updates. [PLACEHOLDER: link to full privacy policy]</span>
+      <span>We only use your email to send the guide and occasional updates. <a href="privacy.html" style="color:var(--amber-soft);">Privacy policy</a></span>
     </div>
   </div>
 </footer>
