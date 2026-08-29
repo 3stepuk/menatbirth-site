@@ -676,8 +676,30 @@
       <p style="margin-top:14px; color:var(--ink-soft); max-width:48ch;">
         Ten short lines that help — and the ones to avoid. A free PDF, straight from the book, that you can read in five minutes and remember in five seconds.
       </p>
-      <script async src="https://the-3step.kit.com/3aa66f2483/index.js" data-uid="3aa66f2483"></script>
-      <p style="font-size:0.8rem; color:var(--ink-soft); margin-top:10px;">No spam. Unsubscribe any time. <a href="privacy.html" style="color:var(--purple);">Privacy notice</a></p>
+      <form class="guide-form" id="guide-form">
+        <input type="email" id="guide-email" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit" class="btn btn-amber">Send me the guide</button>
+      </form>
+      <p id="guide-msg" style="font-size:0.8rem; color:var(--ink-soft); margin-top:10px;">No spam. Unsubscribe any time. <a href="privacy.html" style="color:var(--purple);">Privacy notice</a></p>
+      <script>
+        document.getElementById("guide-form").addEventListener("submit", async function(e){
+          e.preventDefault();
+          var email = document.getElementById("guide-email").value.trim();
+          var msg = document.getElementById("guide-msg");
+          var btn = this.querySelector("button");
+          btn.disabled = true; btn.textContent = "Sending…";
+          try {
+            var r = await fetch("https://menlovebirth-guide.livingawake.workers.dev/", {
+              method: "POST", headers: {"Content-Type": "application/json"},
+              body: JSON.stringify({email: email})
+            });
+            var d = await r.json();
+            if (d.ok) { msg.innerHTML = "Check your inbox — the guide's on its way."; this.querySelector("input").value = ""; }
+            else { msg.innerHTML = "Something didn't work — try again, or email me directly at mark@birthing4blokes.com."; }
+          } catch(err) { msg.innerHTML = "Something didn't work — try again in a moment."; }
+          btn.disabled = false; btn.textContent = "Send me the guide";
+        });
+      </script>
     </div>
       <div class="cue-card guide-preview-card tilt-l">
         <span class="eyebrow" style="margin-bottom:4px;">Preview</span>
