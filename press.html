@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press — Men, Love &amp; Birth</title>
+
+<style>
+  :root {
+    --navy: #14213D;
+    --navy-deep: #0D1730;
+    --cream: #FAF6EE;
+    --purple: #662D82;
+    --amber: #C08A3E;
+    --amber-soft: #E8D3AD;
+    --ink: #1E1B16;
+    --ink-soft: #55503f;
+    --card: #FFFDF8;
+    --line: rgba(20,33,61,0.12);
+    --radius: 6px;
+    --max: 1120px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    font-size: 19px;
+  }
+  a { color: inherit; }
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  section { padding: 72px 0; }
+  @media (max-width: 720px) { section { padding: 48px 0; } }
+
+  .eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--purple);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-amber { background: var(--purple); color: var(--cream); }
+  .btn-navy-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+
+  header.site-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--cream); border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; max-width: var(--max); margin: 0 auto; }
+  .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; color: var(--navy); }
+  .nav-links { display: flex; gap: 28px; font-size: 0.95rem; }
+  .nav-links a { text-decoration: none; color: var(--ink); }
+  .nav-links a:hover { color: var(--amber); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  .section-head { max-width: 680px; margin-bottom: 40px; }
+  .section-head h2 { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 0 0 12px; }
+  .section-head p { color: var(--ink-soft); margin: 0; font-size: 1.05rem; }
+
+  .press-hero { background: var(--navy); color: var(--cream); }
+  .press-hero .eyebrow { color: var(--amber-soft); }
+  .press-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4.5vw, 3rem); margin: 0 0 16px; line-height: 1.1; }
+  .press-hero .sub { max-width: 640px; color: rgba(250,246,238,0.85); margin: 0 0 28px; font-size: 1.12rem; }
+
+  .contact-band { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-block h3 { font-family: 'Fraunces', serif; margin: 0 0 12px; font-size: 1.15rem; }
+  .contact-block p { color: var(--ink-soft); margin: 0 0 10px; font-size: 1rem; }
+  .contact-block a { color: var(--purple); font-weight: 600; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
+  .prose h3 { font-family: 'Fraunces', serif; margin: 24px 0 10px; font-size: 1.15rem; }
+  .prose p { color: var(--ink); }
+  .prose ul { padding-left: 20px; }
+  .prose li { margin-bottom: 8px; }
+  .prose .muted { color: var(--ink-soft); }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 8px; }
+  .fact-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+  .fact-card .num { font-family: 'Fraunces', serif; font-size: 1.6rem; color: var(--purple); margin-bottom: 6px; }
+  .fact-card p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .cue-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .cue-card h3 { font-family: 'Fraunces', serif; margin: 0 0 8px; font-size: 1.1rem; }
+  .cue-card p { margin: 0 0 12px; color: var(--ink-soft); }
+  .cue-card .attrib { font-size: 0.85rem; color: var(--purple); font-weight: 600; }
+
+  .qa { margin-top: 8px; }
+  .qa h4 { font-family: 'Fraunces', serif; margin: 18px 0 6px; font-size: 1.05rem; }
+  .qa p { margin: 0 0 12px; color: var(--ink-soft); }
+
+  .asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .asset { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .asset img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+  .asset .cap { padding: 12px 16px; font-size: 0.88rem; color: var(--ink-soft); }
+
+  footer {
+    background: var(--navy-deep);
+    color: rgba(250,246,238,0.7);
+    padding: 56px 0 32px;
+    font-size: 0.9rem;
+  }
+  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid rgba(250,246,238,0.15); }
+  .footer-logo { font-family: 'Fraunces', serif; color: var(--cream); font-size: 1.1rem; }
+  .footer-links { display: flex; gap: 22px; align-items: center; }
+  .footer-links a { text-decoration: none; color: rgba(250,246,238,0.7); display: inline-flex; align-items: center; gap: 6px; }
+  .footer-links a:hover { color: var(--amber); }
+  .footer-links svg { width: 16px; height: 16px; fill: currentColor; }
+  .footer-bottom { padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="logo">Men, Love <span>&amp;</span> Birth</div>
+    <nav class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#guide">Free Guide</a>
+      <a href="index.html#testimonials">Praise</a>
+      <a href="press.html">Press</a>
+      <a href="index.html#buy">Buy the Book</a>
+    </nav>
+    <a href="index.html#buy" class="btn btn-navy-outline" style="padding:10px 18px; font-size:0.9rem;">Buy the Book</a>
+  </div>
+</header>
+
+<!-- ================= PRESS HERO ================= -->
+<section class="press-hero">
+  <div class="wrap">
+    <span class="eyebrow">Press &amp; media</span>
+    <h1>Men, Love &amp; Birth — media kit</h1>
+    <p class="sub">Mark Harris is available for interviews and expert commentary on men, partners and birth — including caesarean and instrumental birth, birth trauma in men, and maternity advocacy.</p>
+    <a href="mailto:mark@birthing4blokes.com" class="btn btn-amber">Email the press office</a>
+  </div>
+</section>
+
+<!-- ================= CONTACT / FOR EDITORS ================= -->
+<section class="contact-band" style="padding:56px 0;">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>For editors &amp; producers</h3>
+        <p>Interviews, expert commentary and review copies on request. Mark is available for <strong>radio, podcast and TV</strong> — by phone, remote or in studio, and flexible on timing.</p>
+        <p>Review copies: a print PDF (and ePUB for e-readers) available on request.</p>
+        <p><a href="mailto:mark@birthing4blokes.com">mark@birthing4blokes.com</a></p>
+      </div>
+      <div class="contact-block">
+        <h3>Buy the book</h3>
+        <p>Paperback (2nd edition, 2026) — £11.99 · Kindle — £7.99.</p>
+        <a href="https://amzn.eu/d/0171AvfZ" class="btn btn-navy-outline">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT THE BOOK ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The book</span>
+      <h2>About <em>Men, Love &amp; Birth</em></h2>
+      <p>This is the second edition — eleven years on, and a bigger book. First published in 2015, the birth room has changed: the caesarean rate has climbed, and the man standing in it has never mattered more.</p>
+    </div>
+    <div class="two-col">
+      <div class="prose">
+        <h3>What's new in the second edition</h3>
+        <ul>
+          <li><strong>Six brand-new chapters</strong> — including a dedicated chapter on caesarean and instrumental birth, the third stage, the first days at home, sex after birth, and two on what the old book never touched: the power of the words we use, and when birth leaves a mark.</li>
+          <li><strong>Two chapters rewritten from the ground up</strong> — including a breastfeeding chapter rebuilt around the real early days.</li>
+          <li><strong>A new closing conversation</strong> with Professor Denis Walsh on what birth has become.</li>
+          <li><strong>Bigger in every sense</strong> — around a third more words, typeset to breathe: 184 pages against the original's dense 108.</li>
+        </ul>
+        <p>Same voice as the first edition — warm, funny, unflinchingly direct. Written for the birth room as it is now, not as it was.</p>
+      </div>
+      <div class="prose">
+        <h3>About Mark Harris</h3>
+        <p>Mark Harris is a trained midwife with thirty years in birth work — a midwife since 1993 — and the founder of Birthing 4 Blokes, through which he has spent his career teaching men to be real partners in the birth room. He created and trains the Birthing Awareness 3-Step process, and is an NLP trainer and a clinical hypnotherapist.</p>
+        <p>He wrote <em>Men, Love &amp; Birth</em> because he has seen too many partners stand at the edge of the room, desperate to help and not knowing how. He lives in Leicestershire and is the father of eight and a grandfather of thirteen.</p>
+        <p class="muted">Credentials: trained midwife (never "registered") · founder of Birthing 4 Blokes (numeral 4) · creator and trainer of the Birthing Awareness 3-Step process · NLP trainer · clinical hypnotherapist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KEY FACTS ================= -->
+<section style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">For your piece</span>
+      <h2>Key facts</h2>
+    </div>
+    <div class="facts">
+      <div class="fact-card"><div class="num">~50%</div><p>Of UK births now involve intervention — roughly 45% caesarean (2024–25) plus about 1 in 9 instrumental.</p></div>
+      <div class="fact-card"><div class="num">30 yrs</div><p>In birth work; a midwife since 1993.</p></div>
+      <div class="fact-card"><div class="num">12,000+</div><p>Followers across X, Instagram, LinkedIn and YouTube, plus an 878-strong list of birth professionals.</p></div>
+      <div class="fact-card"><div class="num">2015</div><p>First edition published by Pinter &amp; Martin; fully revised and re-issued for 2026.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ANGLES + QUESTIONS ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Story ideas</span>
+      <h2>Interview angles</h2>
+    </div>
+    <div class="two-col">
+      <div class="qa">
+        <h4>Men get birth trauma too</h4>
+        <p>Men are traumatised by witnessing difficult births without a framework to process it, but are expected to stay stoic.</p>
+        <h4>Roughly half of births now involve intervention</h4>
+        <p>Yet most antenatal education still centres on unmedicated physiological birth. What partners actually need to know.</p>
+        <h4>The three things a partner should never say</h4>
+        <p>"Just relax", "calm down", "is it nearly over?" — and what to say instead.</p>
+        <h4>Partners are not spare parts</h4>
+        <p>The bumbling-sitcom-father trope isn't just outdated, it's actively detrimental.</p>
+      </div>
+      <div class="qa">
+        <h4>Birth can make or break a relationship</h4>
+        <p>How the birth room becomes the couple.</p>
+        <h4>The partner as unpaid advocate</h4>
+        <p>Inside under-pressure maternity units — a current-affairs angle on maternity safety.</p>
+        <h4>What 30 years in delivery rooms taught a man</h4>
+        <p>Human-interest feature on love, fear and staying useful.</p>
+        <h4>Suggested questions</h4>
+        <p>1. Why a male midwife? &nbsp; 2. Is the birth room keeping up with the ~50% intervention reality? &nbsp; 3. Worst thing a partner can say? &nbsp; 4. What does birth trauma in men look like? &nbsp; 5. What's the one piece of advice for a man whose partner is pregnant?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENDORSEMENTS ================= -->
+<section style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Endorsements</span>
+      <h2>What readers say</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px;">
+      <div class="cue-card">
+        <h3>Foreword by Professor Denis Walsh</h3>
+        <p>Midwifery researcher and Associate Professor (retired), foreword author to both editions and featured in a closing conversation in the book.</p>
+      </div>
+      <div class="cue-card">
+        <h3>First outside reader, new edition</h3>
+        <p>A woman who read the rewritten chapters in draft and helped shape them. <span class="attrib">Full name + quote to follow.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEDIA ASSETS ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Downloads</span>
+      <h2>Media assets</h2>
+      <p>High-resolution images below. The full media kit (longer biography, sample questions, more photos) is available on request.</p>
+    </div>
+    <div class="asset-grid">
+      <div class="asset"><img src="images/press-cover.jpg" alt="Men, Love &amp; Birth — Second Edition, book cover"><div class="cap">Book cover</div></div>
+      <div class="asset"><img src="images/press-headshot.jpg" alt="Mark Harris speaking at a birth conference"><div class="cap">Author — speaking</div></div>
+      <div class="asset"><img src="images/mark-headshot.jpg" alt="Mark Harris"><div class="cap">Author headshot</div></div>
+      <div class="asset"><img src="images/reader-with-book.jpg" alt="A reader holding Men, Love &amp; Birth"><div class="cap">Reader with the book</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-logo">Men, Love &amp; Birth</div>
+      <div class="footer-links">
+        <a class="email-link" href="mailto:mark@birthing4blokes.com">mark@birthing4blokes.com</a>
+        <a href="https://www.facebook.com/menlovebirth" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+        <a href="https://x.com/Birthing4Blokes" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
+        <a href="https://www.patreon.com/c/Birthing4blokes" aria-label="Patreon"><svg viewBox="0 0 24 24"><path d="M0 .48v23.04h4.22V.48zm15.385 0c-4.764 0-8.641 3.88-8.641 8.65 0 4.755 3.877 8.623 8.641 8.623 4.75 0 8.615-3.868 8.615-8.623C24 4.36 20.136.48 15.385.48z"/></svg>Patreon</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Men, Love &amp; Birth. All rights reserved.</span>
+      <span>We only use your email to send the guide and occasional updates. <a href="privacy.html" style="color:var(--amber-soft);">Privacy policy</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
