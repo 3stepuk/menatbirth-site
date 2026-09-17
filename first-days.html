@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to actually help in the first days — a free one-pager for birth partners | Men, Love & Birth</title>
+<meta name="description" content="Most women start breastfeeding; by the first birthday only about one in six still is. A free one-page guide for the partner — how the milk is actually made, and how to guard her against the noise. By Mark Harris, midwife of thirty years.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How to actually help in the first days">
+<meta property="og:description" content="A free one-page guide for birth partners. From Men, Love & Birth — the new edition.">
+<meta property="og:url" content="https://menlovebirth.com/first-days.html">
+<style>
+  :root{
+    --navy:#14213D; --cream:#FAF6EE; --amber:#C08A3E; --ink:#1E1B16;
+    --card:#FFFDF8; --purple:#662D82; --ink-soft:#55504A;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:'Fraunces',Georgia,'Times New Roman',serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  header{background:var(--navy);color:var(--cream);padding:16px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  header a{color:var(--cream);text-decoration:none;font-size:0.95rem;opacity:.9}
+  header .brand{font-weight:600;letter-spacing:.02em}
+  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.14em;
+    font-size:0.72rem;color:var(--amber);font-weight:600;margin-bottom:12px}
+  main{padding:46px 0 30px}
+  h1{font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.12;margin:0 0 16px;font-weight:600}
+  h1 .accent{color:var(--purple)}
+  .lede{font-size:1.12rem;color:var(--ink-soft);max-width:60ch;margin:0 0 22px}
+  .guide-form{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 10px}
+  .guide-form input[type="email"]{flex:1 1 240px;min-width:200px;padding:14px 16px;
+    border:1.5px solid #d9d2c2;border-radius:8px;font-size:1rem;background:#fff;font-family:inherit}
+  .guide-form button{cursor:pointer;border:0;border-radius:8px;padding:14px 22px;
+    background:var(--amber);color:#241a06;font-weight:700;font-size:1rem;font-family:inherit}
+  .guide-form button:hover{transform:translateY(-1px)}
+  .note{font-size:0.82rem;color:var(--ink-soft)}
+  .note a{color:var(--purple)}
+  .cue-card{background:var(--card);border:1px solid #e6ddc9;border-radius:10px;
+    padding:22px 24px;margin:34px 0;transform:rotate(1.2deg);
+    box-shadow:0 10px 24px rgba(20,33,61,.07)}
+  .cue-card h3{font-size:1.05rem;margin:0 0 12px}
+  .cue-card li{margin:8px 0;color:var(--ink)}
+  .teaser{color:var(--ink-soft);font-style:italic}
+  footer{background:var(--navy);color:var(--cream);padding:26px 0;margin-top:20px;font-size:0.86rem}
+  footer a{color:var(--cream);opacity:.85}
+  @media (prefers-reduced-motion:no-preference){.guide-form button{transition:transform .14s ease}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <span class="brand">Men, Love &amp; Birth</span>
+  <a href="/">← Back to the book</a>
+</div></header>
+
+<main class="wrap">
+  <span class="eyebrow">Free one-page guide</span>
+  <h1>How to actually help <span class="accent">in the first days</span></h1>
+  <p class="lede">Most women in this country start breastfeeding. By the baby's first birthday, only about one in six still is. And the biggest thing driving women to stop isn't the milk — it's <em>contradictory advice</em>.</p>
+  <p class="lede" style="color:var(--ink); font-weight:600;">
+    Your job in the first days isn't to fix anything. It's to know how it works — and guard her against the noise.
+  </p>
+  <p class="lede">One page: six things to know, the single question that cuts through bad advice, and what you actually do. Written by Mark Harris, midwife of thirty years, and taken from <em>Men, Love &amp; Birth</em> — the new edition.</p>
+
+  <form class="guide-form" id="guide-form">
+    <input type="email" id="guide-email" placeholder="Your email address" required aria-label="Email address">
+    <button type="submit" class="btn">Send me the guide</button>
+  </form>
+  <p class="note" id="guide-msg">No spam. Unsubscribe any time. <a href="/privacy.html">Privacy notice</a></p>
+
+  <div class="cue-card">
+    <h3>What's inside</h3>
+    <ul>
+      <li><strong>Milk is made to order.</strong> Supply follows demand — feeding often <em>is</em> how the milk gets made.</li>
+      <li><strong>The stomach is tiny.</strong> A marble's worth on day one. The baby isn't starving.</li>
+      <li><strong>Letdown is shy.</strong> It needs her calm, warm and unobserved.</li>
+      <li><strong>One clear voice beats ten opinions.</strong> And the one question that cuts through everything.</li>
+      <li class="teaser">…and what you actually do, hour to hour.</li>
+    </ul>
+  </div>
+
+  <script>
+    document.getElementById("guide-form").addEventListener("submit", async function(e){
+      e.preventDefault();
+      var email = document.getElementById("guide-email").value.trim();
+      var msg = document.getElementById("guide-msg");
+      var btn = this.querySelector("button");
+      btn.disabled = true; btn.textContent = "Sending…";
+      try {
+        var r = await fetch("https://menlovebirth-guide.livingawake.workers.dev/", {
+          method: "POST", headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({email: email, source: "first-days"})
+        });
+        var d = await r.json();
+        if (d.ok) { msg.innerHTML = "Check your inbox — the guide's on its way."; this.querySelector("input").value = ""; }
+        else { msg.innerHTML = "Something didn't work — try again, or email me at mark@birthing4blokes.com."; }
+      } catch(err) { msg.innerHTML = "Something didn't work — try again in a moment."; }
+      btn.disabled = false; btn.textContent = "Send me the guide";
+    });
+  </script>
+</main>
+
+<footer><div class="wrap">
+  © Mark Harris · <a href="/">menlovebirth.com</a> · <a href="/privacy.html">Privacy</a>
+</div></footer>
+</body>
+</html>
