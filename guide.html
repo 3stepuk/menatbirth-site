@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to say in the birth room — a free one-page guide for birth partners | Men, Love & Birth</title>
+<meta name="description" content="Ten short lines that actually help in a birth room, and the ones to never say. A free one-page guide, straight from the book. By Mark Harris, midwife of thirty years.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What to say in the birth room — a free guide">
+<meta property="og:description" content="The ten lines that help most, and the ones to avoid. Free, one page. From Men, Love & Birth.">
+<meta property="og:url" content="https://menlovebirth.com/guide.html">
+<style>
+  :root{--navy:#14213D;--cream:#FAF6EE;--amber:#C08A3E;--ink:#1E1B16;--card:#FFFDF8;--purple:#662D82;--ink-soft:#55504A}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Fraunces',Georgia,'Times New Roman',serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  header{background:var(--navy);color:var(--cream);padding:16px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  header a{color:var(--cream);text-decoration:none;font-size:.95rem;opacity:.9}
+  header .brand{font-weight:600;letter-spacing:.02em}
+  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--amber);font-weight:600;margin-bottom:12px}
+  main{padding:46px 0 30px}
+  h1{font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.12;margin:0 0 16px;font-weight:600}
+  h1 .accent{color:var(--purple)}
+  .lede{font-size:1.12rem;color:var(--ink-soft);max-width:60ch;margin:0 0 22px}
+  .guide-form{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 10px}
+  .guide-form input[type="email"]{flex:1 1 240px;min-width:200px;padding:14px 16px;border:1.5px solid #d9d2c2;border-radius:8px;font-size:1rem;background:#fff;font-family:inherit}
+  .guide-form button{cursor:pointer;border:0;border-radius:8px;padding:14px 22px;background:var(--amber);color:#241a06;font-weight:700;font-size:1rem;font-family:inherit}
+  .guide-form button:hover{transform:translateY(-1px)}
+  .note{font-size:.82rem;color:var(--ink-soft)}
+  .note a{color:var(--purple)}
+  .cue-card{background:var(--card);border:1px solid #e6ddc9;border-radius:10px;padding:22px 24px;margin:34px 0;transform:rotate(-1.2deg);box-shadow:0 10px 24px rgba(20,33,61,.07)}
+  .cue-card h3{font-size:1.05rem;margin:0 0 12px}
+  .cue-card li{margin:8px 0}
+  .teaser{color:var(--ink-soft);font-style:italic}
+  footer{background:var(--navy);color:var(--cream);padding:26px 0;margin-top:20px;font-size:.86rem}
+  footer a{color:var(--cream);opacity:.85}
+  @media (prefers-reduced-motion:no-preference){.guide-form button{transition:transform .14s ease}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="brand">Men, Love &amp; Birth</span><a href="/">← Back to the book</a></div></header>
+<main class="wrap">
+  <span class="eyebrow">Free one-page guide</span>
+  <h1>What to say <span class="accent">in the birth room</span></h1>
+  <p class="lede">Ten short lines that actually help — and the ones to avoid. You don't need to know what to <em>do</em>. You need to know what to <em>say</em>.</p>
+  <p class="lede">A free PDF, straight from the book, that you can read in five minutes and remember in five seconds. Written by Mark Harris, midwife of thirty years.</p>
+  <form class="guide-form" id="guide-form">
+    <input type="email" id="guide-email" placeholder="Your email address" required aria-label="Email address">
+    <button type="submit">Send me the guide</button>
+  </form>
+  <p class="note" id="guide-msg">No spam. Unsubscribe any time. <a href="/privacy.html">Privacy notice</a></p>
+  <div class="cue-card">
+    <h3>The 10 Lines That Help</h3>
+    <ul>
+      <li><span>1.</span> "I'm not going anywhere."</li>
+      <li><span>2.</span> "Tell me what you need right now."</li>
+      <li><span>3.</span> "You're doing this. I've got the rest."</li>
+      <li class="teaser">…and the seven that follow — yours free, with the why behind each one.</li>
+    </ul>
+  </div>
+  <script>
+    document.getElementById("guide-form").addEventListener("submit", async function(e){
+      e.preventDefault();
+      var email = document.getElementById("guide-email").value.trim();
+      var msg = document.getElementById("guide-msg");
+      var btn = this.querySelector("button");
+      btn.disabled = true; btn.textContent = "Sending…";
+      try {
+        var r = await fetch("https://menlovebirth-guide.livingawake.workers.dev/", {
+          method:"POST", headers:{"Content-Type":"application/json"},
+          body: JSON.stringify({email: email, source: "guide"})
+        });
+        var d = await r.json();
+        if (d.ok) { msg.innerHTML = "Check your inbox — the guide's on its way."; this.querySelector("input").value = ""; }
+        else { msg.innerHTML = "Something didn't work — try again, or email me at mark@birthing4blokes.com."; }
+      } catch(err) { msg.innerHTML = "Something didn't work — try again in a moment."; }
+      btn.disabled = false; btn.textContent = "Send me the guide";
+    });
+  </script>
+</main>
+<footer><div class="wrap">© Mark Harris · <a href="/">menlovebirth.com</a> · <a href="/privacy.html">Privacy</a></div></footer>
+</body>
+</html>
