@@ -56,7 +56,7 @@
   .note{font-size:0.82rem;color:var(--ink-soft)}
   .note a{color:var(--purple)}
   .cue-card{background:var(--card);border:1px solid #e6ddc9;border-radius:10px;
-    padding:22px 24px;margin:24px 0;transform:rotate(-1.2deg);
+    padding:22px 24px;margin:24px 0;
     box-shadow:0 10px 24px rgba(20,33,61,.07)}
   .cue-card h3{font-size:1.05rem;margin:0 0 12px}
   .cue-card li{margin:8px 0;color:var(--ink)}
@@ -90,7 +90,7 @@
   <h1>The birth room, <span class="accent">video by video</span></h1>
   <p class="lede">Everything I'd want you to know before the birth — what your role actually is, what to say when it matters, and what happens in a caesarean room. Short videos you can watch in one sitting, in the order that helps.</p>
   <p class="lede" style="color:var(--ink); font-weight:600;">
-    It's free. The videos live on YouTube — but they play here, one after another, so you don't have to go hunting.
+    It's free and open — watch every video right here, right now. No signup, no email, nothing to unlock. They live on YouTube, but they play here, one after another, so you don't have to go hunting.
   </p>
 
   <!-- video course — click to load (no YouTube cookies until you press play) -->
@@ -102,7 +102,7 @@
       <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
     </button>
   </div>
-  <p class="player-note">Twelve videos, free to watch. Nothing to sign up for. <a href="https://www.youtube.com/playlist?list=PLRTummuCcuAKXiliN02yYO0M0PClKJ4op" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+  <p class="player-note">Twelve videos, all free and open — nothing to sign up for, just press play. <a href="https://www.youtube.com/playlist?list=PLRTummuCcuAKXiliN02yYO0M0PClKJ4op" target="_blank" rel="noopener">Open on YouTube</a>.</p>
 
   <div class="cue-card">
     <h3>What's inside</h3>
@@ -119,10 +119,10 @@
   <!-- the magnet sits AFTER the value — an invitation, not a gate -->
   <div class="invite">
     <h2>If this is the kind of thing you want more of, come and be part of it.</h2>
-    <p>The videos are free, and they'll stay free. If you'd like the written version — the ten lines that help most in a birth room, and the ones to avoid — leave your email and I'll send the one-page guide. You'll get the occasional note as this work grows, and nothing else.</p>
+    <p>The videos are free, and they'll stay free — watch them all above whenever you like, no email needed. If you'd like the written version, leave your email and I'll send <strong>The 10 Lines That Help</strong> — a one-page guide to what to say in a birth room, and what to leave unsaid. Then I'll walk you through the videos by email — a short note at a time, in the order that helps. That's the whole of it: the guide, and a few notes. Nothing else.</p>
     <form class="guide-form" id="course-form">
       <input type="email" id="course-email" placeholder="Your email address" required aria-label="Email address">
-      <button type="submit">Send me the guide</button>
+      <button type="submit">Get the guide</button>
     </form>
     <p class="note" id="course-msg">No spam. Unsubscribe any time. <a href="/privacy.html">Privacy notice</a></p>
   </div>
@@ -164,10 +164,10 @@
           body: JSON.stringify({email: email, source: "course"})
         });
         var d = await r.json();
-        if (d.ok) { msg.innerHTML = "Check your inbox — the guide's on its way."; this.querySelector("input").value = ""; }
+        if (d.ok) { msg.innerHTML = "Check your inbox — the guide's on its way, and the notes will follow."; this.querySelector("input").value = ""; }
         else { msg.innerHTML = "Something didn't work — try again, or email me at mark@birthing4blokes.com."; }
       } catch(err) { msg.innerHTML = "Something didn't work — try again in a moment."; }
-      btn.disabled = false; btn.textContent = "Send me the guide";
+      btn.disabled = false; btn.textContent = "Get the guide";
     });
   </script>
 </main>
